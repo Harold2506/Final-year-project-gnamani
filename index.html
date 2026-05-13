@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Recommendation System — Home</title>
+    <meta name="description" content="Online Product Recommendation and Comparison System — Browse electronics and get personalized recommendations.">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom Stylesheet -->
+    <link href="static/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <i class="bi bi-cpu"></i> RecommendX
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="compare.html">Compare</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- ========== PAGE HEADER ========== -->
+<div class="page-header">
+    <div class="container">
+        <h1><i class="bi bi-stars"></i> Product Recommendation System</h1>
+        <p>Browse our catalog and get personalized recommendations powered by a hybrid machine learning engine.</p>
+    </div>
+</div>
+
+<!-- ========== MAIN CONTENT ========== -->
+<main class="container pb-5">
+
+    <!-- Recommended For You -->
+    <section class="mb-5">
+        <h2 class="section-title"><i class="bi bi-lightning-charge-fill"></i> Recommended For You</h2>
+        <p class="text-muted mb-3" style="font-size:.85rem;">
+            Based on your browsing history and similar users' preferences (Hybrid Engine — α = 0.5).
+        </p>
+        <div class="row g-3" id="recommendedRow">
+            <!-- Recommendation 1 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="product-card">
+                    <span class="card-category smartphone">Smartphone</span>
+                    <div class="card-title">Xiaomi Plus 1</div>
+                    <div class="card-rating">
+                        <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
+                        <span class="rating-num">4.6</span>
+                    </div>
+                    <div class="card-price mt-1">$743.67</div>
+                    <div class="card-specs">
+                        <span><i class="bi bi-memory"></i> 8GB</span>
+                        <span><i class="bi bi-device-ssd"></i> 128GB</span>
+                        <span><i class="bi bi-battery-full"></i> 4000mAh</span>
+                    </div>
+                    <div class="card-actions">
+                        <span class="badge badge-score">Score: 0.74</span>
+                        <a href="product_detail.html?id=124" class="btn btn-sm btn-outline-custom ms-2">View</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Recommendation 2 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="product-card">
+                    <span class="card-category smartphone">Smartphone</span>
+                    <div class="card-title">Samsung Galaxy Pro 1</div>
+                    <div class="card-rating">
+                        <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i></span>
+                        <span class="rating-num">4.4</span>
+                    </div>
+                    <div class="card-price mt-1">$655.65</div>
+                    <div class="card-specs">
+                        <span><i class="bi bi-memory"></i> 6GB</span>
+                        <span><i class="bi bi-device-ssd"></i> 512GB</span>
+                        <span><i class="bi bi-battery-full"></i> 4500mAh</span>
+                    </div>
+                    <div class="card-actions">
+                        <span class="badge badge-score">Score: 0.51</span>
+                        <a href="product_detail.html?id=106" class="btn btn-sm btn-outline-custom ms-2">View</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Recommendation 3 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="product-card">
+                    <span class="card-category laptop">Laptop</span>
+                    <div class="card-title">MacBook Air Air 5</div>
+                    <div class="card-rating">
+                        <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i><i class="bi bi-star"></i></span>
+                        <span class="rating-num">3.9</span>
+                    </div>
+                    <div class="card-price mt-1">$1,038.31</div>
+                    <div class="card-specs">
+                        <span><i class="bi bi-memory"></i> 16GB</span>
+                        <span><i class="bi bi-device-ssd"></i> 1TB</span>
+                        <span><i class="bi bi-battery-full"></i> 100Wh</span>
+                    </div>
+                    <div class="card-actions">
+                        <span class="badge badge-score">Score: 0.50</span>
+                        <a href="product_detail.html?id=135" class="btn btn-sm btn-outline-custom ms-2">View</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Recommendation 4 -->
+            <div class="col-md-4 col-lg-3">
+                <div class="product-card">
+                    <span class="card-category smartphone">Smartphone</span>
+                    <div class="card-title">OnePlus Edition 5</div>
+                    <div class="card-rating">
+                        <span class="stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></span>
+                        <span class="rating-num">4.6</span>
+                    </div>
+                    <div class="card-price mt-1">$779.07</div>
+                    <div class="card-specs">
+                        <span><i class="bi bi-memory"></i> 8GB</span>
+                        <span><i class="bi bi-device-ssd"></i> 256GB</span>
+                        <span><i class="bi bi-battery-full"></i> 4500mAh</span>
+                    </div>
+                    <div class="card-actions">
+                        <span class="badge badge-score">Score: 0.50</span>
+                        <a href="product_detail.html?id=122" class="btn btn-sm btn-outline-custom ms-2">View</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- All Products -->
+    <section>
+        <h2 class="section-title"><i class="bi bi-grid-3x3-gap-fill"></i> All Products</h2>
+
+        <!-- Filter Bar -->
+        <div class="d-flex align-items-center mb-3 gap-2 flex-wrap">
+            <button class="btn btn-sm btn-primary-custom filter-btn active" data-filter="all">All</button>
+            <button class="btn btn-sm btn-outline-custom filter-btn" data-filter="Smartphone">Smartphones</button>
+            <button class="btn btn-sm btn-outline-custom filter-btn" data-filter="Laptop">Laptops</button>
+            <div class="ms-auto">
+                <a href="compare.html" class="btn btn-sm btn-outline-custom" id="compareBtn" style="display:none;">
+                    <i class="bi bi-arrow-left-right"></i> Compare Selected (<span id="compareCount">0</span>)
+                </a>
+            </div>
+        </div>
+
+        <div class="row g-3" id="productGrid">
+            <!-- Products are rendered by JavaScript below -->
+        </div>
+    </section>
+</main>
+
+<!-- ========== FOOTER ========== -->
+<footer class="text-center">
+    <div class="container">
+        <p class="mb-0">© 2026 Online Product Recommendation System — Final Year Project</p>
+    </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// ============================================================
+// Product Data (loaded from the generated dataset)
+// In a full implementation this would come from the FastAPI backend
+// ============================================================
+const products = [
+    {id:101,name:"iPhone Pro 1",category:"Smartphone",price:1044.93,ram:"8GB",storage:"256GB",battery:"4000mAh",rating:4.6},
+    {id:102,name:"iPhone Edition 2",category:"Smartphone",price:1044.40,ram:"6GB",storage:"1TB",battery:"4000mAh",rating:3.5},
+    {id:103,name:"iPhone Ultra 3",category:"Smartphone",price:739.60,ram:"6GB",storage:"256GB",battery:"5000mAh",rating:4.5},
+    {id:104,name:"iPhone Max 4",category:"Smartphone",price:851.71,ram:"16GB",storage:"512GB",battery:"4000mAh",rating:4.6},
+    {id:105,name:"iPhone Ultra 5",category:"Smartphone",price:1018.88,ram:"12GB",storage:"512GB",battery:"4000mAh",rating:3.8},
+    {id:106,name:"Samsung Galaxy Pro 1",category:"Smartphone",price:655.65,ram:"6GB",storage:"512GB",battery:"4500mAh",rating:4.4},
+    {id:109,name:"Samsung Galaxy Edition 4",category:"Smartphone",price:736.74,ram:"12GB",storage:"128GB",battery:"4000mAh",rating:4.8},
+    {id:111,name:"Samsung Galaxy Edition 6",category:"Smartphone",price:760.19,ram:"6GB",storage:"256GB",battery:"5000mAh",rating:4.6},
+    {id:113,name:"Google Pixel Ultra 1",category:"Smartphone",price:1093.08,ram:"12GB",storage:"1TB",battery:"4500mAh",rating:3.6},
+    {id:115,name:"Google Pixel Edition 3",category:"Smartphone",price:875.31,ram:"12GB",storage:"256GB",battery:"4000mAh",rating:4.6},
+    {id:118,name:"OnePlus Edition 1",category:"Smartphone",price:853.30,ram:"6GB",storage:"1TB",battery:"4500mAh",rating:4.4},
+    {id:121,name:"OnePlus Air 4",category:"Smartphone",price:601.95,ram:"12GB",storage:"256GB",battery:"5000mAh",rating:4.9},
+    {id:122,name:"OnePlus Edition 5",category:"Smartphone",price:779.07,ram:"8GB",storage:"256GB",battery:"4500mAh",rating:4.6},
+    {id:124,name:"Xiaomi Plus 1",category:"Smartphone",price:743.67,ram:"8GB",storage:"128GB",battery:"4000mAh",rating:4.6},
+    {id:126,name:"Xiaomi Max 3",category:"Smartphone",price:699.08,ram:"16GB",storage:"256GB",battery:"5000mAh",rating:4.6},
+
+    {id:131,name:"MacBook Air Plus 1",category:"Laptop",price:1937.26,ram:"16GB",storage:"512GB",battery:"100Wh",rating:3.9},
+    {id:135,name:"MacBook Air Air 5",category:"Laptop",price:1038.31,ram:"16GB",storage:"1TB",battery:"100Wh",rating:3.9},
+    {id:136,name:"MacBook Air Pro 6",category:"Laptop",price:1553.32,ram:"8GB",storage:"256GB",battery:"50Wh",rating:5.0},
+    {id:137,name:"MacBook Pro Ultra 1",category:"Laptop",price:1490.90,ram:"64GB",storage:"512GB",battery:"100Wh",rating:4.9},
+    {id:142,name:"MacBook Pro Pro 6",category:"Laptop",price:1811.56,ram:"16GB",storage:"2TB",battery:"50Wh",rating:4.9},
+    {id:143,name:"Dell XPS Max 1",category:"Laptop",price:1810.68,ram:"8GB",storage:"2TB",battery:"85Wh",rating:4.9},
+    {id:148,name:"Dell XPS Air 6",category:"Laptop",price:2217.37,ram:"32GB",storage:"256GB",battery:"85Wh",rating:4.9},
+    {id:152,name:"HP Spectre Ultra 4",category:"Laptop",price:1883.09,ram:"32GB",storage:"512GB",battery:"100Wh",rating:4.3},
+    {id:156,name:"Lenovo ThinkPad Max 3",category:"Laptop",price:2303.03,ram:"64GB",storage:"512GB",battery:"70Wh",rating:4.8},
+    {id:161,name:"ASUS Zenbook Plus 1",category:"Laptop",price:1273.63,ram:"8GB",storage:"1TB",battery:"85Wh",rating:4.5},
+    {id:162,name:"ASUS Zenbook Air 2",category:"Laptop",price:1955.18,ram:"32GB",storage:"256GB",battery:"50Wh",rating:4.8},
+];
+
+// Stars helper
+function stars(rating) {
+    let full = Math.floor(rating), half = rating % 1 >= 0.3 ? 1 : 0;
+    let html = '';
+    for(let i=0;i<full;i++) html += '<i class="bi bi-star-fill"></i>';
+    if(half) html += '<i class="bi bi-star-half"></i>';
+    for(let i=0;i<5-full-half;i++) html += '<i class="bi bi-star"></i>';
+    return html;
+}
+
+// Render grid
+const grid = document.getElementById('productGrid');
+const selected = new Set();
+
+function renderProducts(filter) {
+    grid.innerHTML = '';
+    const list = filter === 'all' ? products : products.filter(p => p.category === filter);
+    list.forEach(p => {
+        const catClass = p.category.toLowerCase();
+        grid.innerHTML += `
+        <div class="col-md-4 col-lg-3">
+            <div class="product-card">
+                <div class="d-flex justify-content-between align-items-start">
+                    <span class="card-category ${catClass}">${p.category}</span>
+                    <input type="checkbox" class="compare-checkbox" title="Select to compare"
+                           data-id="${p.id}" ${selected.has(p.id) ? 'checked' : ''}
+                           onchange="toggleCompare(${p.id}, this.checked)">
+                </div>
+                <div class="card-title">${p.name}</div>
+                <div class="card-rating">
+                    <span class="stars">${stars(p.rating)}</span>
+                    <span class="rating-num">${p.rating}</span>
+                </div>
+                <div class="card-price mt-1">$${p.price.toLocaleString()}</div>
+                <div class="card-specs">
+                    <span><i class="bi bi-memory"></i> ${p.ram}</span>
+                    <span><i class="bi bi-device-ssd"></i> ${p.storage}</span>
+                    <span><i class="bi bi-battery-full"></i> ${p.battery}</span>
+                </div>
+                <div class="card-actions">
+                    <a href="product_detail.html?id=${p.id}" class="btn btn-sm btn-primary-custom">View Details</a>
+                </div>
+            </div>
+        </div>`;
+    });
+}
+
+// Filter buttons
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => {
+            b.classList.remove('active','btn-primary-custom');
+            b.classList.add('btn-outline-custom');
+        });
+        btn.classList.add('active','btn-primary-custom');
+        btn.classList.remove('btn-outline-custom');
+        renderProducts(btn.dataset.filter);
+    });
+});
+
+// Compare logic
+function toggleCompare(id, checked) {
+    if (checked) { if(selected.size < 3) selected.add(id); else { alert('You can compare up to 3 products.'); return; }}
+    else selected.delete(id);
+    updateCompareBtn();
+}
+function updateCompareBtn() {
+    const btn = document.getElementById('compareBtn');
+    const cnt = document.getElementById('compareCount');
+    cnt.textContent = selected.size;
+    btn.style.display = selected.size >= 2 ? 'inline-block' : 'none';
+    btn.href = `compare.html?ids=${[...selected].join(',')}`;
+}
+
+renderProducts('all');
+</script>
+</body>
+</html>

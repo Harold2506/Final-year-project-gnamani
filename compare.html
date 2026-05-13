@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Products — RecommendX</title>
+    <meta name="description" content="Compare electronics specifications side-by-side.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="static/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><i class="bi bi-cpu"></i> RecommendX</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="compare.html">Compare</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+        <div class="container">
+            <h1><i class="bi bi-arrow-left-right"></i> Product Comparison</h1>
+            <p>Select 2 or 3 products to compare their specifications side-by-side and make a faster purchasing
+                decision.</p>
+        </div>
+    </div>
+
+    <!-- MAIN -->
+    <main class="container pb-5">
+
+        <!-- Product Selector -->
+        <div class="bg-white rounded p-4 mb-4" style="box-shadow:var(--shadow-sm);">
+            <h5 style="font-weight:700;color:var(--primary);"><i class="bi bi-plus-circle"></i> Select Products to
+                Compare</h5>
+            <div class="row g-3 mt-1">
+                <div class="col-md-4">
+                    <label class="form-label fw-semibold" style="font-size:.85rem;">Product 1</label>
+                    <select class="form-select" id="sel1"></select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label fw-semibold" style="font-size:.85rem;">Product 2</label>
+                    <select class="form-select" id="sel2"></select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label fw-semibold" style="font-size:.85rem;">Product 3 <span
+                            class="text-muted">(optional)</span></label>
+                    <select class="form-select" id="sel3">
+                        <option value="">— None —</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-primary-custom mt-3" onclick="runComparison()">
+                <i class="bi bi-table"></i> Compare Now
+            </button>
+        </div>
+
+        <!-- Comparison Table -->
+        <div id="comparisonResult" style="display:none;">
+            <h2 class="section-title"><i class="bi bi-table"></i> Side-by-Side Comparison</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered comparison-table mb-0" id="compTable">
+                    <!-- Filled by JS -->
+                </table>
+            </div>
+
+            <!-- Verdict -->
+            <div class="bg-white rounded p-4 mt-4" style="box-shadow:var(--shadow-sm);" id="verdictBox">
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-0">© 2026 Online Product Recommendation System — Final Year Project</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const products = [
+            { id: 101, name: "iPhone Pro 1", category: "Smartphone", price: 1044.93, ram: "8GB", storage: "256GB", battery: "4000mAh", rating: 4.6 },
+            { id: 102, name: "iPhone Edition 2", category: "Smartphone", price: 1044.40, ram: "6GB", storage: "1TB", battery: "4000mAh", rating: 3.5 },
+            { id: 103, name: "iPhone Ultra 3", category: "Smartphone", price: 739.60, ram: "6GB", storage: "256GB", battery: "5000mAh", rating: 4.5 },
+            { id: 104, name: "iPhone Max 4", category: "Smartphone", price: 851.71, ram: "16GB", storage: "512GB", battery: "4000mAh", rating: 4.6 },
+            { id: 105, name: "iPhone Ultra 5", category: "Smartphone", price: 1018.88, ram: "12GB", storage: "512GB", battery: "4000mAh", rating: 3.8 },
+            { id: 106, name: "Samsung Galaxy Pro 1", category: "Smartphone", price: 655.65, ram: "6GB", storage: "512GB", battery: "4500mAh", rating: 4.4 },
+            { id: 109, name: "Samsung Galaxy Edition 4", category: "Smartphone", price: 736.74, ram: "12GB", storage: "128GB", battery: "4000mAh", rating: 4.8 },
+            { id: 111, name: "Samsung Galaxy Edition 6", category: "Smartphone", price: 760.19, ram: "6GB", storage: "256GB", battery: "5000mAh", rating: 4.6 },
+            { id: 113, name: "Google Pixel Ultra 1", category: "Smartphone", price: 1093.08, ram: "12GB", storage: "1TB", battery: "4500mAh", rating: 3.6 },
+            { id: 115, name: "Google Pixel Edition 3", category: "Smartphone", price: 875.31, ram: "12GB", storage: "256GB", battery: "4000mAh", rating: 4.6 },
+            { id: 118, name: "OnePlus Edition 1", category: "Smartphone", price: 853.30, ram: "6GB", storage: "1TB", battery: "4500mAh", rating: 4.4 },
+            { id: 121, name: "OnePlus Air 4", category: "Smartphone", price: 601.95, ram: "12GB", storage: "256GB", battery: "5000mAh", rating: 4.9 },
+            { id: 122, name: "OnePlus Edition 5", category: "Smartphone", price: 779.07, ram: "8GB", storage: "256GB", battery: "4500mAh", rating: 4.6 },
+            { id: 124, name: "Xiaomi Plus 1", category: "Smartphone", price: 743.67, ram: "8GB", storage: "128GB", battery: "4000mAh", rating: 4.6 },
+            { id: 126, name: "Xiaomi Max 3", category: "Smartphone", price: 699.08, ram: "16GB", storage: "256GB", battery: "5000mAh", rating: 4.6 },
+            { id: 131, name: "MacBook Air Plus 1", category: "Laptop", price: 1937.26, ram: "16GB", storage: "512GB", battery: "100Wh", rating: 3.9 },
+            { id: 135, name: "MacBook Air Air 5", category: "Laptop", price: 1038.31, ram: "16GB", storage: "1TB", battery: "100Wh", rating: 3.9 },
+            { id: 136, name: "MacBook Air Pro 6", category: "Laptop", price: 1553.32, ram: "8GB", storage: "256GB", battery: "50Wh", rating: 5.0 },
+            { id: 137, name: "MacBook Pro Ultra 1", category: "Laptop", price: 1490.90, ram: "64GB", storage: "512GB", battery: "100Wh", rating: 4.9 },
+            { id: 142, name: "MacBook Pro Pro 6", category: "Laptop", price: 1811.56, ram: "16GB", storage: "2TB", battery: "50Wh", rating: 4.9 },
+            { id: 143, name: "Dell XPS Max 1", category: "Laptop", price: 1810.68, ram: "8GB", storage: "2TB", battery: "85Wh", rating: 4.9 },
+            { id: 148, name: "Dell XPS Air 6", category: "Laptop", price: 2217.37, ram: "32GB", storage: "256GB", battery: "85Wh", rating: 4.9 },
+            { id: 152, name: "HP Spectre Ultra 4", category: "Laptop", price: 1883.09, ram: "32GB", storage: "512GB", battery: "100Wh", rating: 4.3 },
+            { id: 156, name: "Lenovo ThinkPad Max 3", category: "Laptop", price: 2303.03, ram: "64GB", storage: "512GB", battery: "70Wh", rating: 4.8 },
+            { id: 161, name: "ASUS Zenbook Plus 1", category: "Laptop", price: 1273.63, ram: "8GB", storage: "1TB", battery: "85Wh", rating: 4.5 },
+            { id: 162, name: "ASUS Zenbook Air 2", category: "Laptop", price: 1955.18, ram: "32GB", storage: "256GB", battery: "50Wh", rating: 4.8 },
+        ];
+
+        // Populate selects
+        function populateSelects() {
+            ['sel1', 'sel2', 'sel3'].forEach((selId, idx) => {
+                const sel = document.getElementById(selId);
+                if (idx === 2) sel.innerHTML = '<option value="">— None —</option>';
+                else sel.innerHTML = '';
+                products.forEach(p => {
+                    sel.innerHTML += `<option value="${p.id}">${p.name} (${p.category})</option>`;
+                });
+            });
+            // Set defaults
+            document.getElementById('sel1').value = products[0].id;
+            document.getElementById('sel2').value = products[5].id;
+        }
+
+        // Check URL for pre-selected IDs
+        function loadFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            const idsStr = params.get('ids');
+            if (!idsStr) return;
+            const ids = idsStr.split(',').map(Number);
+            if (ids[0]) document.getElementById('sel1').value = ids[0];
+            if (ids[1]) document.getElementById('sel2').value = ids[1];
+            if (ids[2]) document.getElementById('sel3').value = ids[2];
+            if (ids.length >= 2) runComparison();
+        }
+
+        function parseNumeric(val) {
+            // Unit-aware numeric parser for fair comparisons
+            const s = String(val).trim().toUpperCase();
+            const num = parseFloat(s.replace(/[^0-9.]/g, '')) || 0;
+            // Storage: normalize to GB
+            if (s.includes('TB')) return num * 1024;
+            if (s.includes('GB')) return num;
+            if (s.includes('MB')) return num / 1024;
+            // Battery: normalize to Wh (mAh × 3.7V / 1000)
+            if (s.includes('MAH')) return num * 3.7 / 1000;  // e.g. 4000mAh → 14.8Wh
+            if (s.includes('WH')) return num;               // e.g. 70Wh → 70
+            return num;
+        }
+
+        function runComparison() {
+            const id1 = parseInt(document.getElementById('sel1').value);
+            const id2 = parseInt(document.getElementById('sel2').value);
+            const id3Str = document.getElementById('sel3').value;
+            const id3 = id3Str ? parseInt(id3Str) : null;
+
+            const selected = [products.find(p => p.id === id1), products.find(p => p.id === id2)];
+            if (id3) selected.push(products.find(p => p.id === id3));
+            if (selected.some(p => !p)) { alert('Invalid product selected.'); return; }
+
+            const attrs = [
+                { label: 'Product', key: 'name', icon: 'bi-tag' },
+                { label: 'Category', key: 'category', icon: 'bi-folder' },
+                { label: 'Price', key: 'price', icon: 'bi-currency-dollar', format: v => `$${v.toLocaleString()}`, best: 'low' },
+                { label: 'RAM', key: 'ram', icon: 'bi-memory', best: 'high' },
+                { label: 'Storage', key: 'storage', icon: 'bi-device-ssd', best: 'high' },
+                { label: 'Battery', key: 'battery', icon: 'bi-battery-full', best: 'high' },
+                { label: 'Rating', key: 'rating', icon: 'bi-star-fill', format: v => `${v} / 5.0`, best: 'high' },
+            ];
+
+            // Build table
+            let html = '<thead><tr><th style="width:140px;"><i class="bi bi-sliders"></i> Specification</th>';
+            selected.forEach(p => html += `<th>${p.name}</th>`);
+            html += '</tr></thead><tbody>';
+
+            attrs.forEach(a => {
+                html += `<tr><td class="attr-label"><i class="bi ${a.icon}" style="margin-right:.35rem;"></i>${a.label}</td>`;
+
+                // Determine best value(s) — highlight ALL ties
+                let values = selected.map(p => p[a.key]);
+                let bestSet = new Set();
+                if (a.best) {
+                    let nums = values.map(v => parseNumeric(v));
+                    let bestVal = a.best === 'high' ? Math.max(...nums) : Math.min(...nums);
+                    nums.forEach((n, i) => { if (n === bestVal) bestSet.add(i); });
+                }
+
+                selected.forEach((p, i) => {
+                    let val = a.format ? a.format(p[a.key]) : p[a.key];
+                    let cls = (bestSet.has(i) && a.best) ? ' class="highlight-best"' : '';
+                    html += `<td${cls}>${val}</td>`;
+                });
+                html += '</tr>';
+            });
+            html += '</tbody>';
+
+            document.getElementById('compTable').innerHTML = html;
+            document.getElementById('comparisonResult').style.display = 'block';
+
+            // Verdict
+            const best = selected.reduce((a, b) => a.rating > b.rating ? a : b);
+            const cheapest = selected.reduce((a, b) => a.price < b.price ? a : b);
+            document.getElementById('verdictBox').innerHTML = `
+        <h5 style="font-weight:700;color:var(--primary);"><i class="bi bi-trophy-fill" style="color:var(--star);"></i> Quick Verdict</h5>
+        <div class="row mt-3">
+            <div class="col-md-6 mb-2">
+                <div style="background:var(--bg-light);border-radius:var(--radius);padding:1rem;">
+                    <div style="font-size:.75rem;text-transform:uppercase;color:var(--text-muted);font-weight:600;">Highest Rated</div>
+                    <div style="font-weight:700;color:var(--primary);font-size:1.1rem;">${best.name}</div>
+                    <div style="font-size:.85rem;color:var(--text-muted);">${best.rating} / 5.0 — $${best.price.toLocaleString()}</div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-2">
+                <div style="background:var(--bg-light);border-radius:var(--radius);padding:1rem;">
+                    <div style="font-size:.75rem;text-transform:uppercase;color:var(--text-muted);font-weight:600;">Best Value (Lowest Price)</div>
+                    <div style="font-weight:700;color:var(--success);font-size:1.1rem;">${cheapest.name}</div>
+                    <div style="font-size:.85rem;color:var(--text-muted);">$${cheapest.price.toLocaleString()} — ${cheapest.rating} / 5.0</div>
+                </div>
+            </div>
+        </div>
+    `;
+
+            // Smooth scroll
+            document.getElementById('comparisonResult').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        populateSelects();
+        loadFromURL();
+    </script>
+</body>
+
+</html>
